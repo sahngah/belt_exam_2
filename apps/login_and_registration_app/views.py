@@ -12,8 +12,8 @@ def register(request):
             context = {
             'user' : variable1['user']
             }
-            # messages.success(request, 'Registration Complete!')
-            return render(request, 'login_and_registration_app/success.html', context)
+            request.session['user'] = variable1['user'].id
+            return redirect('dashboard:index')
         else:
             for random in variable1['errors']:
                 messages.error(request, random)
@@ -26,7 +26,8 @@ def login(request):
             context = {
             'user' : variable2['user']
             }
-            return render(request, 'login_and_registration_app/success.html', context)
+            request.session['user'] = variable2['user'].id
+            return redirect('dashboard:index')
         else:
             messages.error(request, variable2['errors'])
             return redirect('/')

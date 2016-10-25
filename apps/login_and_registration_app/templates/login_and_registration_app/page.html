@@ -7,8 +7,8 @@
   <title>Login and Registration | Home</title>
   <style>
   #register{
-    width:170px;
-    height:205px;
+    width:200px;
+    height:260px;
     border: 10px dotted pink;
   }
   .styling{
@@ -16,7 +16,7 @@
     padding:7px;
   }
   #login{
-    width:170px;
+    width:200px;
     height:105px;
     border:10px dotted pink;
   }
@@ -25,13 +25,13 @@
 <body>
   <div align="center">
   <h1>Registration</h1>
-  <form id="register" action='/register' method="post">
+  <form id="register" action='{% url "login:register" %}' method="post">
     {% csrf_token %}
-    <label class="styling"><input type="text" placeholder="First Name" name="first_name"></label>
-    <label class="styling"><input type="text" placeholder="Last Name" name="last_name"></label>
-    <label class="styling"><input type="text" placeholder="Email" name="email"></label>
-    <label class="styling"><input type="password" placeholder="Password" name="password"></label>
-    <label class="styling"><input type="password" placeholder="Password Confirmation" name="password_confirmation"></label>
+    <label class="styling"><input type="text" placeholder="Name" name="name" required></label>
+    <label class="styling"><input type="text" placeholder="Username" name="username" required></label>
+    <label class="styling">Password should contain at least 8 characters.<input type="password" placeholder="Password" name="password" required></label>
+    <label class="styling"><input type="password" placeholder="Password Confirmation" name="password_confirmation" required></label>
+    <label class="styling">Date Hired: <input type="date" name="date_hired" placeholder="Date Hired" required></label>
     <label class="styling"><input type="submit" value="Register"></label>
   </form>
   {% if messages %}
@@ -40,9 +40,9 @@
     {% endfor %}
   {% endif %}
   <h1>Login</h1>
-  <form id="login" action="/login" method="post">
+  <form id="login" action="{% url 'login:login' %}" method="post">
     {% csrf_token %}
-    <label class="styling"><input type="text" placeholder="Email" name="login_email"></label>
+    <label class="styling"><input type="text" placeholder="Username" name="login_username"></label>
     <label class="styling"><input type="password" placeholder="Password" name="login_password"></label>
     <label class="styling"><input type="submit" value="Login"></label>
   </form>

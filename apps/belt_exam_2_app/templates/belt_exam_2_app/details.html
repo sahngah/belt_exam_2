@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>{{item.item}}</h1>
+  <p>User who added the prodjct/item under their wish list:</p>
+  {% for user in item.users.all %}
+  <p>{{user.name}}</p>
+  {% endfor %}
+
+  <a href="{% url 'dashboard:index' %}">Home</a>
+  <a href="{% url 'dashboard:logout' %}">Logout</a>
+</body>
+</html>

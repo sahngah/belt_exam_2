@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard: My Wish List</title>
+  <style>
+  table{
+    border:solid 2px red;
+    width:500px;
+  }
+  </style>
+</head>
+<body>
+  <h1>Hello, {{user.name}}</h1>
+  <h3>Your Wish List:</h3>
+  <table>
+    <tr>
+      <label class="styling"><th>Item</th></label>
+      <label class="styling"><th>Added By</th></label>
+      <label class="styling"><th>Date Added</th></label>
+      <label class="styling"><th>Action</th></label>
+    </tr>
+    {% for item in user_on %}
+    <tr>
+      <td><a href="{% url 'dashboard:details' item.id %}">{{item.item}}</a></td>
+      <td>{{item.user.name}}</td>
+      <td>{{item.created_at}}</td>
+      <td><a href="{% url 'dashboard:delete' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    {% for item in user_on_on %}
+    <tr>
+      <td><a href="{% url 'dashboard:details' item.id %}">{{item.item}}</a></td>
+      <td>{{item.user.name}}</td>
+      <td>{{item.created_at}}</td>
+      <td><a href="{% url 'dashboard:remove' item.id %}">Remove From My Wish List</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h3>Other Users' Wish List:</h3>
+  <table>
+    <tr>
+      <label class="styling"><th>Item</th></label>
+      <label class="styling"><th>Added By</th></label>
+      <label class="styling"><th>Date Added</th></label>
+      <label class="styling"><th>Action</th></label>
+    </tr>
+    {% for item in user_off %}
+    <tr>
+      <td><a href="{% url 'dashboard:details' item.id %}">{{item.item}}</a></td>
+      <td>{{item.user.name}}</td>
+      <td>{{item.created_at}}</td>
+      <td><a href="{% url 'dashboard:join' item.id %}">Add to my Wishlist!</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'dashboard:create' %}">Add Item</a>
+  <a href="{% url 'dashboard:logout' %}">Logout</a>
+</body>
+</html>

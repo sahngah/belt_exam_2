@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.login_and_registration_app.urls', namespace='login'))
+    url(r'^', include('apps.login_and_registration_app.urls', namespace='login')),
+    url(r'^dashboard/', include('apps.belt_exam_2_app.urls', namespace="dashboard"))
 ]
