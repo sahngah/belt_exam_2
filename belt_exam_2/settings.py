@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django_extensions',
-    'django_belt_exam_2_app',
-    'django_login_and_registration_app',
+    'apps.belt_exam_2_app',
+    'apps.login_and_registration_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

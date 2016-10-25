@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login and Registration | Home</title>
+  <style>
+  #register{
+    width:170px;
+    height:205px;
+    border: 10px dotted pink;
+  }
+  .styling{
+    display:block;
+    padding:7px;
+  }
+  #login{
+    width:170px;
+    height:105px;
+    border:10px dotted pink;
+  }
+  </style>
+</head>
+<body>
+  <div align="center">
+  <h1>Registration</h1>
+  <form id="register" action='/register' method="post">
+    {% csrf_token %}
+    <label class="styling"><input type="text" placeholder="First Name" name="first_name"></label>
+    <label class="styling"><input type="text" placeholder="Last Name" name="last_name"></label>
+    <label class="styling"><input type="text" placeholder="Email" name="email"></label>
+    <label class="styling"><input type="password" placeholder="Password" name="password"></label>
+    <label class="styling"><input type="password" placeholder="Password Confirmation" name="password_confirmation"></label>
+    <label class="styling"><input type="submit" value="Register"></label>
+  </form>
+  {% if messages %}
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+  <h1>Login</h1>
+  <form id="login" action="/login" method="post">
+    {% csrf_token %}
+    <label class="styling"><input type="text" placeholder="Email" name="login_email"></label>
+    <label class="styling"><input type="password" placeholder="Password" name="login_password"></label>
+    <label class="styling"><input type="submit" value="Login"></label>
+  </form>
+</div>
+</body>
+</html>
